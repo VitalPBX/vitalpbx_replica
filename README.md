@@ -95,5 +95,5 @@ IP Standby............... > <strong>192.168.10.62</strong>
 Are you sure to continue with this settings? (yes,no) > <strong>yes</strong>
 </pre>
 
-<strong>CONGRATULATIONS</strong>, you have installed and tested the high availability in <strong>VitalPBX 3</strong><br>
+<strong>CONGRATULATIONS</strong>, you have installed Replica Server in <strong>VitalPBX 3</strong><br>
 :+1:
