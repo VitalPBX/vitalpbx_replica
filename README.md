@@ -10,7 +10,7 @@ Note:<br>
 Because this is a deployment in two remote sites, it is not possible to have the automatic toggle facility as it is done in the High Availability configuration with the floating IP.<br>
 
 ## Example:<br>
-![VitalPBX HA](https://github.com/VitalPBX/vitalpbx_ha/blob/master/HAReplica2Servers.png)
+![VitalPBX HA](https://github.com/VitalPBX/vitalpbx_replica/blob/main/HAReplica2Servers.png)
 
 -----------------
 ## Prerequisites
