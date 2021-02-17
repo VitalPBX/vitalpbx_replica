@@ -149,7 +149,7 @@ ssh root@$ip_standby [[ ! -d /home/sync/var/spool/asterisk/monitor_temp ]] && ss
 if [ ! -d "/home/sync/var/lib/asterisk/agi-bin_temp" ] ;then
 	mkdir -p /home/sync/var/lib/asterisk/agi-bin_temp
 fi
-ssh root@$ip_standby [[ ! -d /home/sync/var/lib/asterisk/agi-bin_temp ]] && ssh root@$ip_standby "mkdir-p /home/sync/var/lib/asterisk/agi-bin_temp" || echo "Path exist";
+ssh root@$ip_standby [[ ! -d /home/sync/var/lib/asterisk/agi-bin_temp ]] && ssh root@$ip_standby "mkdir -p /home/sync/var/lib/asterisk/agi-bin_temp" || echo "Path exist";
 
 if [ ! -d "/home/sync/var/lib/asterisk/priv-callerintros_temp" ] ;then
 	mkdir -p /home/sync/var/lib/asterisk/priv-callerintros_temp
