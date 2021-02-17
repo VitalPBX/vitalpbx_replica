@@ -158,8 +158,18 @@ sync {
 		default.rsync,
 		source="/var/spool/asterisk/monitor",
 		target="$ip_standby:/var/spool/asterisk/monitor",
+		delete = 'running',
+                --delay = 5,
 		rsync={
-				owner = true,
+                		-- timeout = 3000,
+                		update = true,
+                		_extra={"--temp-dir=/home/sync/var/spool/asterisk/monitor_temp/"},
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
 		}
 }
@@ -167,8 +177,18 @@ sync {
 		default.rsync,
 		source="/var/lib/asterisk/agi-bin/",
 		target="$ip_standby:/var/lib/asterisk/agi-bin/",
+		delete = 'running',
+                --delay = 5,
 		rsync={
-				owner = true,
+                		-- timeout = 3000,
+                		update = true,
+                		_extra={"--temp-dir=/home/sync/var/lib/asterisk/agi-bin_temp/"},
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
 		}
 }
@@ -176,8 +196,18 @@ sync {
 		default.rsync,
 		source="/var/lib/asterisk/priv-callerintros/",
 		target="$ip_standby:/var/lib/asterisk/priv-callerintros",
+		delete = 'running',
+                --delay = 5,
 		rsync={
-				owner = true,
+                		-- timeout = 3000,
+                		update = true,
+                		_extra={"--temp-dir=/home/sync/var/lib/asterisk/priv-callerintros_temp/"},
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
 		}
 }
@@ -185,8 +215,18 @@ sync {
 		default.rsync,
 		source="/var/lib/asterisk/sounds/",
 		target="$ip_standby:/var/lib/asterisk/sounds/",
+		delete = 'running',
+                --delay = 5,
 		rsync={
-				owner = true,
+                		-- timeout = 3000,
+                		update = true,
+                		_extra={"--temp-dir=/home/sync/var/lib/asterisk/sounds_temp/"},
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
 		}
 }
@@ -194,27 +234,26 @@ sync {
 		default.rsync,
 		source="/var/lib/vitalpbx",
 		target="$ip_standby:/var/lib/vitalpbx",
+		delete = 'running',
+                --delay = 5,
 		rsync = {
+		                -- timeout = 3000,
+                		update = true,
 				binary = "/usr/bin/rsync",
-				owner = true,
-				group = true,			
-				archive = "true",
-				_extra = {
+				_extra = {      "--temp-dir=/home/sync/var/lib/asterisk/sounds_temp/",
 						"--exclude=*.lic",
 						"--exclude=*.dat",
 						"--exclude=dbsetup-done",
 						"--exclude=cache"
 						}
-				}
-}
-sync {
-		default.rsync,
-		source="/etc/asterisk",
-		target="$ip_standby:/etc/asterisk",
-		rsync={
-				owner = true,
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
-		}
+			}
 }
 EOF
 cat > /tmp/lsyncd.conf << EOF
