@@ -270,7 +270,7 @@ sync {
 						"--exclude=*.dat",
 						"--exclude=dbsetup-done",
 						"--exclude=cache"
-						}
+						},
                 		times = true,
                 		archive = true,
                 		compress = true,
@@ -385,7 +385,7 @@ sync {
 						"--exclude=*.dat",
 						"--exclude=dbsetup-done",
 						"--exclude=cache"
-						}
+						},
                 		times = true,
                 		archive = true,
                 		compress = true,
