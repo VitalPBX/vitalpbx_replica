@@ -37,8 +37,8 @@ Disable the DHCP option and set these values<br>
 ## Install Dependencies
 Install the necessary dependencies on both servers<br>
 <pre>
-[root@server<strong>1</strong> ~]# yum -y install lsyncd
-[root@server<strong>2</strong> ~]# yum -y install lsyncd
+[root@server<strong>1</strong> ~]# yum -y install wget unison
+[root@server<strong>2</strong> ~]# yum -y install wget unison
 </pre>
 
 ## Create authorization key for the Access between the two servers without credentials
