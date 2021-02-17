@@ -141,6 +141,31 @@ chown asterisk:asterisk /var/spool/asterisk/monitor
 ssh root@$ip_standby [[ ! -d /var/spool/asterisk/monitor ]] && ssh root@$ip_standby "mkdir /var/spool/asterisk/monitor" || echo "Path exist";
 ssh root@$ip_standby "chown asterisk:asterisk /var/spool/asterisk/monitor"
 
+if [ ! -d "/home/sync/var/spool/asterisk/monitor_temp" ] ;then
+	mkdir -p /home/sync/var/spool/asterisk/monitor_temp
+fi
+ssh root@$ip_standby [[ ! -d /home/sync/var/spool/asterisk/monitor_temp ]] && ssh root@$ip_standby "mkdir -p /home/sync/var/spool/asterisk/monitor_temp" || echo "Path exist";
+
+if [ ! -d "/home/sync/var/lib/asterisk/agi-bin_temp" ] ;then
+	mkdir -p /home/sync/var/lib/asterisk/agi-bin_temp
+fi
+ssh root@$ip_standby [[ ! -d /home/sync/var/lib/asterisk/agi-bin_temp ]] && ssh root@$ip_standby "mkdir-p /home/sync/var/lib/asterisk/agi-bin_temp" || echo "Path exist";
+
+if [ ! -d "/home/sync/var/lib/asterisk/priv-callerintros_temp" ] ;then
+	mkdir -p /home/sync/var/lib/asterisk/priv-callerintros_temp
+fi
+ssh root@$ip_standby [[ ! -d /home/sync/var/lib/asterisk/priv-callerintros_temp ]] && ssh root@$ip_standby "mkdir -p /home/sync/var/lib/asterisk/priv-callerintros_temp" || echo "Path exist";
+
+if [ ! -d "/home/sync/var/lib/asterisk/sounds_temp" ] ;then
+	mkdir -p /home/sync/var/lib/asterisk/sounds_temp
+fi
+ssh root@$ip_standby [[ ! -d /home/sync/var/lib/asterisk/sounds_temp ]] && ssh root@$ip_standby "mkdir -p /home/sync/var/lib/asterisk/sounds_temp" || echo "Path exist";
+
+if [ ! -d "/home/sync/var/lib/vitalpbx_temp" ] ;then
+	mkdir -p /home/sync/var/lib/vitalpbx_temp
+fi
+ssh root@$ip_standby [[ ! -d /home/sync/var/lib/vitalpbx_temp ]] && ssh root@$ip_standby "mkdir -p /home/sync/var/lib/vitalpbx_temp" || echo "Path exist";
+
 cat > /etc/lsyncd.conf << EOF
 ----
 -- User configuration file for lsyncd.
@@ -240,7 +265,7 @@ sync {
 		                -- timeout = 3000,
                 		update = true,
 				binary = "/usr/bin/rsync",
-				_extra = {      "--temp-dir=/home/sync/var/lib/asterisk/sounds_temp/",
+				_extra = {      "--temp-dir=/home/sync/var/lib/vitalpbx_temp/",
 						"--exclude=*.lic",
 						"--exclude=*.dat",
 						"--exclude=dbsetup-done",
@@ -253,7 +278,7 @@ sync {
                 		acls = true,
                 		owner = true
 				group = true
-			}
+		}
 }
 EOF
 cat > /tmp/lsyncd.conf << EOF
@@ -273,8 +298,18 @@ sync {
 		default.rsync,
 		source="/var/spool/asterisk/monitor",
 		target="$ip_master:/var/spool/asterisk/monitor",
+		delete = 'running',
+                --delay = 5,
 		rsync={
-				owner = true,
+                		-- timeout = 3000,
+                		update = true,
+                		_extra={"--temp-dir=/home/sync/var/spool/asterisk/monitor_temp/"},
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
 		}
 }
@@ -282,8 +317,18 @@ sync {
 		default.rsync,
 		source="/var/lib/asterisk/agi-bin/",
 		target="$ip_master:/var/lib/asterisk/agi-bin/",
+		delete = 'running',
+                --delay = 5,
 		rsync={
-				owner = true,
+                		-- timeout = 3000,
+                		update = true,
+                		_extra={"--temp-dir=/home/sync/var/lib/asterisk/agi-bin_temp/"},
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
 		}
 }
@@ -291,8 +336,18 @@ sync {
 		default.rsync,
 		source="/var/lib/asterisk/priv-callerintros/",
 		target="$ip_master:/var/lib/asterisk/priv-callerintros",
+		delete = 'running',
+                --delay = 5,
 		rsync={
-				owner = true,
+                		-- timeout = 3000,
+                		update = true,
+                		_extra={"--temp-dir=/home/sync/var/lib/asterisk/priv-callerintros_temp/"},
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
 		}
 }
@@ -300,8 +355,18 @@ sync {
 		default.rsync,
 		source="/var/lib/asterisk/sounds/",
 		target="$ip_master:/var/lib/asterisk/sounds/",
+		delete = 'running',
+                --delay = 5,
 		rsync={
-				owner = true,
+                		-- timeout = 3000,
+                		update = true,
+                		_extra={"--temp-dir=/home/sync/var/lib/asterisk/sounds_temp/"},
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
 		}
 }
@@ -309,25 +374,24 @@ sync {
 		default.rsync,
 		source="/var/lib/vitalpbx",
 		target="$ip_master:/var/lib/vitalpbx",
+		delete = 'running',
+                --delay = 5,
 		rsync = {
+		                -- timeout = 3000,
+                		update = true,
 				binary = "/usr/bin/rsync",
-				owner = true,
-				group = true,
-				archive = "true",
-				_extra = {
+				_extra = {      "--temp-dir=/home/sync/var/lib/vitalpbx_temp/",
 						"--exclude=*.lic",
 						"--exclude=*.dat",
 						"--exclude=dbsetup-done",
 						"--exclude=cache"
 						}
-				}
-}
-sync {
-		default.rsync,
-		source="/etc/asterisk",
-		target="$ip_master:/etc/asterisk",
-		rsync={
-				owner = true,
+                		times = true,
+                		archive = true,
+                		compress = true,
+                		perms = true,
+                		acls = true,
+                		owner = true
 				group = true
 		}
 }
