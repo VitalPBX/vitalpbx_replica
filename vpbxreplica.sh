@@ -131,7 +131,7 @@ echo -e "3"	> step.txt
 
 create_lsyncd_config_file:
 echo -e "************************************************************"
-echo -e "*          Configure lsync in Server 1 and 2               *"
+echo -e "*          Configure Sync in Server 1 and 2               *"
 echo -e "************************************************************"
 if [ ! -d "/var/spool/asterisk/monitor" ] ;then
 	mkdir /var/spool/asterisk/monitor
