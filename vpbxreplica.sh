@@ -194,7 +194,7 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
@@ -213,7 +213,7 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
@@ -232,7 +232,7 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
@@ -251,7 +251,7 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
@@ -276,7 +276,7 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
@@ -309,7 +309,7 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
@@ -328,7 +328,7 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
@@ -347,7 +347,7 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
@@ -366,7 +366,7 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
@@ -391,12 +391,17 @@ sync {
                 		compress = true,
                 		perms = true,
                 		acls = true,
-                		owner = true
+                		owner = true,
 				group = true
 		}
 }
 EOF
 scp /tmp/lsyncd.conf root@$ip_standby:/etc/lsyncd.conf
+systemctl enable lsyncd.service
+ssh root@$ip_standby "systemctl enable lsyncd.service"
+systemctl start lsyncd.service
+ssh root@$ip_standby "systemctl start lsyncd.service"
+
 echo -e "*** Done Step 4 ***"
 echo -e "4"	> step.txt
 
