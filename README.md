@@ -95,5 +95,10 @@ IP Standby............... > <strong>192.168.10.62</strong>
 Are you sure to continue with this settings? (yes,no) > <strong>yes</strong>
 </pre>
 
+## Note
+
+If you want both servers to have the same settings in the Asterisk files, you must apply changes to both servers each time you make a change.<pre>
+
+
 <strong>CONGRATULATIONS</strong>, you have installed Replica Server in <strong>VitalPBX 3</strong><br>
 :+1:
