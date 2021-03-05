@@ -101,4 +101,5 @@ If you want both servers to have the same settings in the Asterisk files, you mu
 
 
 <strong>CONGRATULATIONS</strong>, you have installed Replica Server in <strong>VitalPBX 3</strong><br>
-:+1:
+
+
