@@ -1,7 +1,7 @@
 #!/bin/bash
 # This code is the property of VitalPBX LLC Company
 # License: Proprietary
-# Date: 23-Jan-2021
+# Date: 25-Apr-2021
 # VitalPBX Replica with MariaDB Replica and Lsync
 #
 set -e
