@@ -166,6 +166,11 @@ if [ ! -d "/home/sync/var/lib/vitalpbx_temp" ] ;then
 fi
 ssh root@$ip_standby [[ ! -d /home/sync/var/lib/vitalpbx_temp ]] && ssh root@$ip_standby "mkdir -p /home/sync/var/lib/vitalpbx_temp" || echo "Path exist";
 
+if [ ! -d "/home/sync/var/spool/asterisk/sqlite3_temp" ] ;then
+	mkdir -p /home/sync/var/spool/asterisk/sqlite3_temp
+fi
+ssh root@$ip_standby [[ ! -d /home/sync/var/spool/asterisk/sqlite3_temp ]] && ssh root@$ip_standby "mkdir -p /home/sync/var/spool/asterisk/sqlite3_temp" || echo "Path exist";
+
 cat > /etc/lsyncd.conf << EOF
 ----
 -- User configuration file for lsyncd.
@@ -197,6 +202,21 @@ sync {
                 		owner = true,
 				group = true
 		}
+}
+sync {
+		default.rsync,
+		source="/var/lib/asterisk/",
+		target="$ip_standby:/home/sync/var/spool/asterisk/sqlite3_temp/",
+		rsync = {
+				binary = "/usr/bin/rsync",
+				owner = true,
+				group = true,
+				archive = "true",
+				_extra = {
+						"--include=astdb.sqlite3",
+						"--exclude=*"
+						}
+				}
 }
 sync {
 		default.rsync,
@@ -312,6 +332,21 @@ sync {
                 		owner = true,
 				group = true
 		}
+}
+sync {
+		default.rsync,
+		source="/var/lib/asterisk/",
+		target="$ip_master:/home/sync/var/spool/asterisk/sqlite3_temp/",
+		rsync = {
+				binary = "/usr/bin/rsync",
+				owner = true,
+				group = true,
+				archive = "true",
+				_extra = {
+						"--include=astdb.sqlite3",
+						"--exclude=*"
+						}
+				}
 }
 sync {
 		default.rsync,
