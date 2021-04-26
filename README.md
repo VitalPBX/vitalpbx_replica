@@ -98,7 +98,7 @@ Are you sure to continue with this settings? (yes,no) > <strong>yes</strong>
 ## Note
 If you want both servers to have the same settings in the Asterisk files and keep the changes in the Asterisk database (astdb.sqlite3), when starting the backup server run the following command in the console:<br>
 <pre>
-[root@server<strong>1</strong> ~]# vpbxstart
+[root@server<strong>1-2</strong> ~]# vpbxstart
 </pre>
 
 <strong>CONGRATULATIONS</strong>, you have installed Replica Server in <strong>VitalPBX 3</strong><br>
