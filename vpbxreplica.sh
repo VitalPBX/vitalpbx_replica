@@ -442,7 +442,7 @@ echo -e "4"	> step.txt
 
 create_mariadb_replica:
 echo -e "************************************************************"
-echo -e "*                Create mariadb replica                    *"
+echo -e "*                Create MariaDB replica                    *"
 echo -e "************************************************************"
 #Remove anonymous user from MySQL
 mysql -uroot -e "DELETE FROM mysql.user WHERE User='';"
