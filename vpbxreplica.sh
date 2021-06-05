@@ -525,6 +525,11 @@ mysql -uroot -e "START SLAVE;"
 echo -e "*** Done Step 5 ***"
 echo -e "5"	> step.txt
 
+echo -e "************************************************************"
+echo -e "*     Create Scripts to copy SQLite Asterisk database      *"
+echo -e "*          Stop Asterisk, copy asterisk database           *"
+echo -e "*                and start Asterisk again                  *"
+echo -e "************************************************************"
 cat > /usr/local/bin/vpbxstart << EOF
 #!/bin/bash
 # This code is the property of VitalPBX LLC Company
