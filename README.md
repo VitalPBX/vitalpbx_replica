@@ -1,5 +1,6 @@
 VitalPBX Replica (Version 3)
 =====
+## This is a proof of concept. If you implement it, it is at your own risk.<br>
 Sometimes it is necessary to have an exact copy of a VitalPBX server in another remote datacenter.<br>
 
 For these we have created a script that performs this function automatically.<br>
