@@ -94,7 +94,7 @@ rename_tenant_id_in_server2:
 echo -e "************************************************************"
 echo -e "*                Remove Tenant in Server 2                 *"
 echo -e "************************************************************"
-remote_tenant_id=`ssh root@$ip_standby "ls /var//lib/vitalpbx/static/"`
+remote_tenant_id=`ssh root@$ip_standby "ls /var/lib/vitalpbx/static/"`
 ssh root@$ip_standby "rm -rf /var/lib/vitalpbx/static/$remote_tenant_id"
 echo -e "*** Done Step 2 ***"
 echo -e "2"	> step.txt
