@@ -8,6 +8,7 @@ The objective of this implementation is to guarantee that if something happens t
 
 Note:<br>
 Because this is a deployment in two remote sites, it is not possible to have the automatic toggle facility as it is done in the High Availability configuration with the floating IP.<br>
+The VitalPBX team does not provide support for systems in an HA environment because it is not possible to determine the environment where it has been installed.
 
 ## Example:<br>
 ![VitalPBX HA](https://github.com/VitalPBX/vitalpbx_replica/blob/main/HAReplica2Servers.png)
