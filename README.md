@@ -15,7 +15,7 @@ The VitalPBX team does not provide support for systems in an HA environment beca
 
 -----------------
 ## Prerequisites
-In order to install VitalPBX in high availability you need the following:<br>
+In order to install VitalPBX in replica, you need the following:<br>
 a.- 2 IP addresses.<br>
 b.- Install VitalPBX Version 3.0 in two servers with similar characteristics.<br>
 c.- MariaDB Galera (include in VitalPBX 3).<br>
