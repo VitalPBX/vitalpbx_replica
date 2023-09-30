@@ -491,6 +491,7 @@ innodb_log_file_size = 64M
 innodb_log_buffer_size = 64M
 bulk_insert_buffer_size = 64M
 max_allowed_packet = 64M
+slave-skip-errors = 1062
 EOF
 scp /tmp/vitalpbx.cnf root@$ip_standby:/etc/my.cnf.d/vitalpbx.cnf
 ssh root@$ip_standby "systemctl restart mariadb"
